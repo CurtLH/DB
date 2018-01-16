@@ -1,7 +1,7 @@
 from setuptools import setup
 
 requirements = [
-    # package requirements go here
+  "psycopg2"
 ]
 
 setup(
@@ -13,9 +13,6 @@ setup(
     url='https://github.com/CurtLH/DB',
     packages=['db'],
     entry_points={
-        'console_scripts': [
-            'db=db.cli:cli'
-        ]
     },
     install_requires=requirements,
     keywords='DB',
