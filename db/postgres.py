@@ -12,12 +12,12 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 
-def connect_to_db(database='postgres', user='postgres', 
+def connect_to_db(database='postgres', user='postgres',
                   password='apassword', host='localhost'):
 
     """
     Connect to Postgres DB and return cursor
- 
+
     Parameters
     ----------
     database : string (default='postgres')
@@ -27,18 +27,18 @@ def connect_to_db(database='postgres', user='postgres',
     password : string (default='apassword')
 
     host : string (default='localhost')
-    
+
     Returns
     -------
-    cur : psycopg2 curson
+    cur : psycopg2 cursor
     """
 
-    # connect to the database
     try:
         conn = psycopg2.connect(database="postgres",
                                 user="postgres",
                                 password="apassword",
                                 host="localhost")
+
         conn.autocommit = True
         cur = conn.cursor()
         logger.info("Successfully connected to the database")
@@ -46,3 +46,22 @@ def connect_to_db(database='postgres', user='postgres',
     except:
         logger.warning("Cannot connect to database")
         exit
+
+
+def query(cur, query):
+
+    """
+    Submit Postgres query for given connection
+
+    Parameters
+    ----------
+    cur : psycopg2 cursor
+
+    query : query string
+
+    Returns
+    -------
+    cur : psycopg2 cursor
+    """
+
+    return cur.execute(query)
