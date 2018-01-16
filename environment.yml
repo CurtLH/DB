@@ -1,0 +1,10 @@
+name: db-dev
+channels:
+  - conda-forge
+dependencies:
+  - python=2.7
+  - pytest
+  - pep8
+  - autopep8
+  - ipython
+  - click
