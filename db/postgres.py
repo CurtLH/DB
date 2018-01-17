@@ -43,6 +43,8 @@ def connect_to_db(database='postgres', user='postgres',
         cur = conn.cursor()
         logger.info("Successfully connected to the database")
 
+        return cur
+
     except:
         logger.warning("Cannot connect to database")
         exit
@@ -64,4 +66,6 @@ def query(cur, query):
     cur : psycopg2 cursor
     """
 
-    return cur.execute(query)
+    cur.execute(query)
+
+    return [i for i in cur]
